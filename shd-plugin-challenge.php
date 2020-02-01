@@ -73,10 +73,19 @@ function shdpc_shortcode() {
     $request = wp_remote_get( $url );
     $public_ip = wp_remote_retrieve_body( $request );
 
-    return $body;
+    set_transient( 'public_ip_address', $public_ip, 3600 );
+
+    $response = get_transient('public_ip_address');
+
+    if( $response === false) {
+        set_transient( 'public_ip_address', $public_ip, 3600 );
+    } else {
+        return $response;
+    };
+
 }
 
-add_shortcode('testing', 'shdpc_shortcode');
+add_shortcode('job_interview', 'shdpc_shortcode');
 
 
 
