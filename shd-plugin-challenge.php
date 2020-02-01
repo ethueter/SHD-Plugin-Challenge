@@ -6,7 +6,7 @@ Plugin URI:  http://link to your plugin homepage
 Description: This plugin was built to complete a code challenge.
 Version:     1.0
 Author:      Tyler Hueter
-Author URI:  http://link to your website
+Author URI:  https://github.com/ethueter/SHD-Plugin-Challenge
 License:     GPL2 etc
 License URI: https://link to your plugin license
 
@@ -24,5 +24,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SHD Plugin Challenge. If not, see (http://link to your plugin license).
 */
+
+function shdpc_custom_post_type() 
+{
+    register_post_type('shdpc_player',
+                        array(
+                            'labels'        => array(
+                                'name'          => __('Players'),
+                                'singular_name' => __('Player'),
+                            ),
+                            'public'        => true,
+                            'has_archive'   => true,
+                        )
+    
+                        );
+}
+add_action('init', 'shdpc_custom_post_type');
+
+
+
+
 
 ?>
