@@ -73,14 +73,12 @@ function shdpc_shortcode() {
     $request = wp_remote_get( $url );
     $public_ip = wp_remote_retrieve_body( $request );
 
-    set_transient( 'public_ip_address', $public_ip, 3600 );
-
     $response = get_transient('public_ip_address');
 
     if( $response === false) {
         set_transient( 'public_ip_address', $public_ip, 3600 );
     } else {
-        return $response;
+        return "<h3> Your public IP address is " . $response . "</h3>";
     };
 
 }
