@@ -25,20 +25,46 @@ You should have received a copy of the GNU General Public License
 along with SHD Plugin Challenge. If not, see (http://link to your plugin license).
 */
 
-function shdpc_custom_post_type() 
-{
-    register_post_type('shdpc_player',
-                        array(
-                            'labels'        => array(
-                                'name'          => __('Players'),
-                                'singular_name' => __('Player'),
-                            ),
-                            'public'        => true,
-                            'has_archive'   => true,
-                        )
-    
-                        );
+function shdpc_custom_post_type() {
+
+    $labels = array(
+        'name'              => _x( 'Players', 'Post Type General Name' ),
+        'singular_name'     => _x( 'Player', 'Post Type Singular Name' ),
+        'menu_name'         => __( 'Players' ),
+        'parent_item_colon' => __( 'Parent Player' ),
+        'all_items'         => __( 'All Players' ),
+        'view_item'         => __( 'View Player' ),
+        'add_new_item'      => __( 'Add New Player' ),
+        'add_new'           => __( 'Add New' ),
+        'edit_item'         => __( 'Edit Player' ),
+        'update_item'       => __( 'Update Player' ),
+        'search_items'      => __( 'Search Player' ),
+        'not_found'         => __( 'Not Found' ),
+        'not_found_in_trash'=> __( 'Not Found in Trash' ),
+
+    );
+
+    #args = array(
+        'label'             => __( 'players' ),
+        'labels'            => $labels,
+        'description'       => __( 'Player info and stats' ),
+        'supports'          => __( 'first_name', 'last_name', 'team', 'position', 'player_number'),
+        'public'            => true,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menus' => true,
+        'show_in_admin_bar' => true,
+        'menu_position'     => 4,
+        'can_export'        => true,
+        'has_archive'       => true,
+        'exclude_from_search'=> false,
+        'publicly_queryable'=> true,
+        'cabability_type'   => 'page',
+    );
+
+    register_post_type( 'players', $args );
 }
+
 add_action('init', 'shdpc_custom_post_type');
 
 
