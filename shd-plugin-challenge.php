@@ -44,11 +44,10 @@ function shdpc_custom_post_type() {
 
     );
 
-    #args = array(
+    $args = array(
         'label'             => __( 'players' ),
         'labels'            => $labels,
         'description'       => __( 'Player info and stats' ),
-        'supports'          => __( 'first_name', 'last_name', 'team', 'position', 'player_number'),
         'public'            => true,
         'show_ui'           => true,
         'show_in_menu'      => true,
@@ -66,6 +65,18 @@ function shdpc_custom_post_type() {
 }
 
 add_action('init', 'shdpc_custom_post_type');
+
+function shdpc_shortcode() {
+    
+    $url = 'http://bot.whatismyipaddress.com/';
+
+    $request = wp_remote_get( $url );
+    $public_ip = wp_remote_retrieve_body( $request );
+
+    return $body;
+}
+
+add_shortcode('testing', 'shdpc_shortcode');
 
 
 
