@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: SHD Plugin Challenge
-Plugin URI:  http://link to your plugin homepage
+Plugin URI:  https://github.com/ethueter/SHD-Plugin-Challenge
 Description: This plugin was built to complete a code challenge.
 Version:     1.0
 Author:      Tyler Hueter
-Author URI:  https://github.com/ethueter/SHD-Plugin-Challenge
+Author URI:  https://github.com/ethueter/
 License:     GPL2 etc
 License URI: https://link to your plugin license
 
